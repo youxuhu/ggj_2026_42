@@ -7,11 +7,11 @@
     router
     @select="handleSelect"
   >
-    <el-menu-item index="/about" class="item"> 🎮 logo </el-menu-item>
+    <el-menu-item index="/about" class="item">  logo </el-menu-item>
 
-    <el-menu-item index="/" class="item">🏠 Home</el-menu-item>
-    <el-menu-item index="/game" class="item">🎤 游戏</el-menu-item>
-    <el-menu-item index="/score" class="item">🏆 排分榜</el-menu-item>
+    <el-menu-item index="/" class="item"> Home</el-menu-item>
+    <el-menu-item index="/game" class="item"> 游戏</el-menu-item>
+    <el-menu-item index="/score" class="item"> 排分榜</el-menu-item>
   </el-menu>
 </template>
 
