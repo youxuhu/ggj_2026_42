@@ -19,18 +19,6 @@ export const useScoreStore = defineStore("score", () => {
       score: 150,
       level: 3,
     },
-    {
-      date: "2026-01-28",
-      name: "玩家_测试2",
-      score: 120,
-      level: 2,
-    },
-    {
-      date: "2026-01-27",
-      name: "Tom",
-      score: 80,
-      level: 1,
-    },
   ]);
 
   // Getters (Computed)
