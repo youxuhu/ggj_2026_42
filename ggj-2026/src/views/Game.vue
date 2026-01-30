@@ -1,6 +1,6 @@
 <template>
-<Micro/>
+    game
 </template>
 <script setup lang="ts" name="Game">
-import Micro from '@/components/microphone.vue'
+// import Micro from '@/components/microphone.vue'
 </script>

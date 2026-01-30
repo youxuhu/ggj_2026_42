@@ -2,28 +2,28 @@
   <div class="scoreboard">
     <!-- 标题 -->
     <div class="header">
-      <h1>🏆 排分榜</h1>
+      <h1>排分榜</h1>
       <p class="subtitle">音量跳跃冒险 - 全球玩家排名</p>
     </div>
 
     <!-- 统计信息 -->
     <div class="stats-section">
       <div class="stat-card">
-        <div class="stat-icon">🎮</div>
+        <div class="stat-icon"></div>
         <div class="stat-info">
           <div class="stat-label">总游戏数</div>
           <div class="stat-value">{{ scoreStore.score.length }}</div>
         </div>
       </div>
       <div class="stat-card">
-        <div class="stat-icon">⭐</div>
+        <div class="stat-icon"></div>
         <div class="stat-info">
           <div class="stat-label">最高分</div>
           <div class="stat-value">{{ scoreStore.maxScore }}</div>
         </div>
       </div>
       <div class="stat-card">
-        <div class="stat-icon">📊</div>
+        <div class="stat-icon"></div>
         <div class="stat-info">
           <div class="stat-label">平均分</div>
           <div class="stat-value">{{ scoreStore.averageScore }}</div>
