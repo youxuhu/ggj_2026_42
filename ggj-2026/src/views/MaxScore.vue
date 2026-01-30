@@ -3,7 +3,7 @@
     <!-- 标题 -->
     <div class="header">
       <h1>排分榜</h1>
-      <p class="subtitle">音量跳跃冒险 - 全球玩家排名</p>
+      <p class="subtitle">玩家排名</p>
     </div>
 
     <!-- 统计信息 -->
