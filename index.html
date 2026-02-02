@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
+<style>
+  * {
+    padding: 0px;
+    margin: 0px;
+  }
+</style>
+
+<script>
+  (function () {
+    // 背景音乐
+    const bgmAudio = new Audio("/music/bgm_normal.wav");
+    bgmAudio.loop = true;
+    bgmAudio.volume = 0.4;
+
+    // 点击音效
+    const clickAudio = new Audio("/music/421341__jaszunio15__click_104.wav");
+    clickAudio.volume = 0.5;
+
+    let bgmStarted = false;
+
+    // 用户首次交互时启动背景音乐
+    const startBGM = () => {
+      if (!bgmStarted) {
+        bgmAudio.play().catch((e) => console.log("背景音乐播放:", e));
+        bgmStarted = true;
+      }
+    };
+
+    // 点击时播放音效并启动背景音乐
+    document.addEventListener("click", () => {
+      startBGM();
+      clickAudio.currentTime = 0;
+      clickAudio.play().catch((e) => console.log("点击音效:", e));
+    });
+
+    // 其他交互也能触发背景音乐
+    document.addEventListener("touchstart", startBGM, { once: true });
+    document.addEventListener("keydown", startBGM, { once: true });
+  })();
+</script>
