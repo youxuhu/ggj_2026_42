@@ -1,0 +1,10 @@
+services:
+  app:
+    image: ${DOCKER_HUB_USER:-huyouxu}/${IMAGE_NAME:-ggj2026}:${IMAGE_TAG:-latest}
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ${CONTAINER_NAME:-ggj2026-app}
+    ports:
+      - "${DEPLOY_PORT:-8080}:80"
+    restart: unless-stopped

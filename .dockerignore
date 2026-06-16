@@ -1,0 +1,13 @@
+node_modules
+dist
+.git
+.gitignore
+*.md
+Assets
+app.exe
+.DS_Store
+.dockerignore
+.env.docker
+deploy.sh
+docker-compose.yml
+pnpm-workspace.yaml

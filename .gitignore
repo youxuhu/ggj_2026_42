@@ -1,1 +1,5 @@
 node_modules
+app.exe
+Assets/
+.DS_Store
+*.log
