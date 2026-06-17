@@ -1,6 +1,29 @@
 # tiny-server — C++ HTTP 静态文件服务器
 
-Linux 体系编程课程项目，用 Linux 系统调用实现一个生产级静态 HTTP 服务器。
+Linux 体系编程课程项目（Global Game Jam 2026 配套部署服务）。
+
+## 简介
+
+**tiny-server** 是一个从零手写的静态 HTTP 文件服务器，用 C++ 和 Linux 系统调用实现。它可以部署任何静态网站（HTML / JS / CSS / 图片 / 音频），支持单页应用（SPA）路由回退和 HTTP/1.1 Keep-Alive 长连接。
+
+### 核心技术
+
+| 技术 | 用途 |
+|---|---|
+| **epoll 边缘触发 (ET)** | 单线程管理数千并发连接，IO 多路复用 |
+| **sendfile 零拷贝** | 文件发送不经过用户态内存，直接内核态 DMA |
+| **fork 多进程** | 多 Worker 进程分担负载，独立事件循环 |
+| **chroot + setuid** | 绑定端口后隔离文件系统 + 降权，安全沙箱 |
+| **eventfd** | 信号处理程序唤醒 epoll 事件循环，优雅退出 |
+| **epoll + 非阻塞 IO** | 全异步模型，无阻塞无线程池 |
+| **HTTP/1.1 协议** | 手写请求解析、响应头构造、Keep-Alive 管理 |
+
+### 能干什么
+
+- 部署任何静态网站：`tiny-server -root /var/www -port 80 -workers 4`
+- 适配 Vue / React / Angular SPA：无扩展名路径自动返回 `index.html`
+- 容器化部署：Docker 三阶段构建，最终镜像仅 ~12MB
+- 生产可用：内置 404/405/413 错误页、`TCP_NODELAY`、`SIGTERM` 优雅关闭
 
 ## 架构
 
