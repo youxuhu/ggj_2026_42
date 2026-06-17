@@ -21,12 +21,10 @@ pnpm preview     # vite preview
 src/
   main.ts              — entrypoint: mounts Vue app w/ Pinia, Router, ElementPlus (zh-CN), PixelUI
   App.vue              — root: <RouterView> with fade transition
-  router/index.ts      — routes: / (welcome), /game/night/:nightIndex, /game/day/:dayIndex,
-                         /game/transition/:transitionIndex, /gameover, /end
+  router/index.ts      — routes: /, /game/night/:i, /game/day/:i, /game/transition/:i, /gameover, /end
   stores/
     gameStore.ts       — core gameplay state (menu items, customers, orders, pressure) + logic
     talks.ts           — night-phase chat dialogue (group chat style)
-    counter.ts         — unused boilerplate, can be deleted
   views/
     Game.vue           — scene orchestrator: N1→T1→D1→N2→T2→D2→N3→T3→D3→N4→End
     GameNight.vue      — text-adventure phone chat, click to advance dialogue bubbles
@@ -40,12 +38,23 @@ src/
     MenuChecker.vue    — tabbed menu categories, item selection checkboxes, submit button
     GameStatus.vue     — pressure meter (circular px-progress) + staff mood face image
     StaffStatus.vue    — 5 mood toggles (smile/slacking/parenting/patient/invisible)
-    CustomerPanel.vue  — shows current customer info (mostly unused by views)
-Assets/               — Unity C# project (separate, not part of the web build)
+  server/              — tiny-server: C++ HTTP static file server (Linux syscall demo)
+    main.c            — epoll event loop, fork workers, chroot, signal handling
+    http.c            — HTTP request parser, URL decode, SPA fallback
+    response.c        — sendfile response builder, keep-alive
+    mime.c            — Content-Type mapping table
+    Makefile           — g++ -O2 -static build
 public/
   pic/characters/      — customer & character images
   music/               — bgm_normal.wav, click_104.wav (see index.html for audio init)
 ```
+
+## Docker / deployment
+
+- 3-stage Dockerfile: g++ compile C server → pnpm build frontend → alpine runtime.
+- `docker compose up -d --build` — builds and starts on port 8080.
+- C server (`tiny-server`) serves static files, epoll edge-triggered, chroot + setuid.
+- `nginx.conf` kept as alternative (not used by default since v2).
 
 ## Game flow
 
